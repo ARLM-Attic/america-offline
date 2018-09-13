@@ -1,0 +1,44 @@
+{
+  "name": "america-offline-dev",
+  "displayName": "America Offline Dev",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "webpack-dev-server --config webpack.config.dev.js",
+    "prod": "rm -rf build && rm -f build.zip && webpack --config webpack.config.min.js && npm run mangle && npm run zip",
+    "mangle": "node mangle-more.js",
+    "eslint": "eslint src/**/*.js",
+    "zip": "powershell.exe -nologo -noprofile -command \"& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::CreateFromDirectory('build', 'build.zip'); }\""
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "autoprefixer": "^6.7.2",
+    "babel-eslint": "^9.0.0",
+    "babel-loader": "^8.0.0",
+    "css-hot-loader": "^1.4.2",
+    "css-loader": "^1.0.0",
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-import-resolver-webpack": "^0.8.4",
+    "eslint-plugin-import": "^2.8.0",
+    "extract-text-webpack-plugin": "^2.0.0",
+    "file-loader": "^1.1.6",
+    "html-webpack-exclude-assets-plugin": "0.0.7",
+    "html-webpack-plugin": "^3.2.0",
+    "ignore-emit-webpack-plugin": "^1.0.2",
+    "mini-css-extract-plugin": "^0.4.2",
+    "postcss-easy-import": "^2.0.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-simple-vars": "^3.0.0",
+    "precss": "^1.4.0",
+    "style-loader": "^0.13.2",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8"
+  },
+  "dependencies": {
+    "tone": "^0.12.80"
+  }
+}
